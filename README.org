@@ -10,6 +10,9 @@
 - Use linux academy for hands one
 - akamai
 
+  [[https://aws.amazon.com/route53/faqs/][faqs]]
+
+ 
 ** Installing CLI
 [[https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html#install-bundle-macos][AWS CLI install instructions]]
 
@@ -42,6 +45,7 @@ Then configure the cli using your creds.
 #+BEGIN_SRC sh
 aws configure
 #+END_SRC
+
 
 ** SQS vs SNS
 
@@ -80,7 +84,7 @@ is strictly preserved Exactly-once delivery
 
 * AWS Architect Associate
 
-**  Cross Account AMI
+** Cross Account AMI
 - Sharing an AMI to other AWS accounts is possible.
 
 - The owner of the AMI retains ownership of that AMI
@@ -224,6 +228,7 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 
 
 ** ElastiCache for Solutions Architects
+
 - Security:
   - Redis support Redis AUTH (username / password)
   - SSL in-flight encryption must be enabled and used
@@ -236,6 +241,7 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
   - Write Through: Adds or update data in the cache when written to a DB (no
     stale data)
   - Session Store: store temporary session data in a cache (using TTL features)
+
 
 ** S3 Overview
 - key/value store for objects
@@ -267,6 +273,7 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 - Reliability: 99.999999999% durability / 99.99% availability, Multi AZ, CRR
 - Performance: scales to thousands of read / writes per second, transfer acceleration / multi-part for big files
 - Cost: pay per storage usage, network cost, requests number
+
 
 *** S3 Encryption for Objects
 
@@ -317,29 +324,37 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
    
 - Cost: Pay per provisioned capacity and storage usage (no need to guess in
   advance any capacity – can use auto scaling)
+
+
 * Terms
-- <<<Cross Orgin Resoure Sharing>>> <<<CORS>>> :: allows you to limit the number
+
+- <<Cross Orgin Resoure Sharing>> <<<CORS>>> :: allows you to limit the number
      of websites that can request your files in S3.
 
      (Lowers cost)
 
-- Amazon DynamoDB Accelerator <<<DAX>>> :: a fully managed, highly available,
+
+- Amazon DynamoDB Accelerator <<DAX>> :: a fully managed, highly available,
      in-memory cache for DynamoDB that delivers up to a 10x performance
      improvement – from milliseconds to microseconds – even at millions of
      requests per second.
 
-- KMS :: Amazon's Key Management System
+- <<KMS>> :: Amazon's Key Management System
     
-- Route 54 :: Amazon Route 53 provides highly available and scalable Domain Name System (DNS), domain
-  name registration, and health-checking web services. With Amazon Route 53, you can create and manage
-  your public DNS records.
+- <<Route 54>> :: Amazon Route 53 provides highly available and scalable Domain Name
+     System (DNS), domain name registration, and health-checking web services.
+     With Amazon Route 53, you can create and manage your public DNS records.
 
   Akamai is more widely used.
 
-  [[https://aws.amazon.com/route53/faqs/][faqs]]
-  
+- S3 One Zone-Infrequent Access ::  (S3 One Zone-IA) S3 One Zone-IA is for data
+     that is accessed less frequently, but requires rapid access when needed.
 
-- <<<record set>>> :: 
+- S3 Standard-Infrequent Access <<S3 Standard-IA>>) :: S3 Standard-IA is for
+     data that is accessed less frequently, but requires rapid access when
+     needed.
+- Online transaction processing <<OLTP>> :: https://en.wikipedia.org/wiki/Online_transaction_processing
+- <<record set>> ::
 
 
 
@@ -378,8 +393,12 @@ Some common record sets: [[https://ns1.com/resources/dns-types-records-servers-a
   the Authoritative Name Server for the current DNS zone, contact details for the domain administrator,
   domain serial number, and information on how frequently DNS information for this zone should be refreshed.
  
-* Exam Questions
 
+* Popular exam topics
+
+** CORS
+
+* Exam 1 Questions
 ** Question
 A tech company has a CRM application hosted on an Auto Scaling group of
 On-Demand EC2 instances. The application is extensively used during office hours
@@ -398,10 +417,9 @@ application starts to increase on Wednesday, remains high on Thursday, and
 starts to decrease on Friday. You can plan your scaling activities based on the
 predictable traffic patterns of your web application.
 
- 
-   --- There was a picture here ----
 
- 
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/images/as-sample-web-architecture-diagram-with-asgs.png
+
 
 To configure your Auto Scaling group to scale based on a schedule, you create a
 scheduled action. The scheduled action tells Amazon EC2 Auto Scaling to perform
@@ -462,11 +480,11 @@ Version 4. Each token has a lifetime of 15 minutes. You don't need to store user
 credentials in the database, because authentication is managed externally using
 IAM. You can also still use standard database authentication.
 
- 
+
 
 [[https://udemy-images.s3.amazonaws.com/redactor/raw/2019-01-13_07-04-06-a2157247b0fa129795001208504fcb51.png]]
 
- 
+
 
 IAM database authentication provides the following benefits:
 
@@ -546,22 +564,14 @@ location where you can view the monthly invoices you receive from AWS. If your
 account isn't past due, the Payment History page shows only previous invoices
 and payment status.
 
- 
+
 
 Reference:
 
 https://aws.amazon.com/aws-cost-management/aws-budgets/
 
- 
+
 
 Check out this AWS Billing and Cost Management Cheat Sheet:
 
 https://tutorialsdojo.com/aws-cheat-sheet-aws-billing-and-cost-management/
-
-
-
-
-
-* Popular exam topics
-
-** CORS
