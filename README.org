@@ -9,6 +9,7 @@
 - Use cloudguru for exams
 - Use linux academy for hands one
 - akamai
+
 ** Installing CLI
 [[https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html#install-bundle-macos][AWS CLI install instructions]]
 
@@ -41,6 +42,7 @@ Then configure the cli using your creds.
 #+BEGIN_SRC sh
 aws configure
 #+END_SRC
+
 ** SQS vs SNS
 
 
@@ -75,7 +77,9 @@ There are two types of queues
 guide for more information on limits. Order in which messages are sent/received
 is strictly preserved Exactly-once delivery
 
+
 * AWS Architect Associate
+
 **  Cross Account AMI
 - Sharing an AMI to other AWS accounts is possible.
 
@@ -232,9 +236,40 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
   - Write Through: Adds or update data in the cache when written to a DB (no
     stale data)
   - Session Store: store temporary session data in a cache (using TTL features)
-** S3
+
+** S3 Overview
+- key/value store for objects
+- Great for big objects, not so great for small objects
+- Serverless, scales infinitely, max object size is 5 TB
+- *Eventuall consistency** for overwrites and deletes
+- Tiers
+  - S3 Standard
+  - S3 IA
+  - S3 One Zone IA
+  - Glacier for backups
+- Features:Versioning, Encryption, Cross Region Replication, etc...
+- Security: IAM, Bucket Policies, ACL
+- Encryption: SSE-S3, SSE-KMS, SSE-C, client side encryption, SSL in transit
+
+
+*Use Case: static files, key value store for big files, website hosting**
+
+*** S3 for Solutions Architect
+
+- Operations: no operations needed
+- Security
+  - IAM
+  - Bucket Policies
+  - ACL
+  - Encryption (Server/Client)
+  - SSL
+   
+- Reliability: 99.999999999% durability / 99.99% availability, Multi AZ, CRR
+- Performance: scales to thousands of read / writes per second, transfer acceleration / multi-part for big files
+- Cost: pay per storage usage, network cost, requests number
 
 *** S3 Encryption for Objects
+
 **** SSE-S3
 - AWS S3 manages keys
 - server-side encryption
@@ -247,9 +282,7 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 - KMS Advantages: *user control + audit trail**
 - Object is encrypted server side
 - Must set header: “x-amz-server-side-encryption": ”aws:kms"
-
-
-
+ 
 
 **** SSE-C
 - server-side encryption
@@ -265,11 +298,36 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 • Customer fully manages the keys and encryption cycle
 
 
+** DynamoDB for Solutions Architect
+
+- Operations: no operations needed, auto scaling capability, serverless
+- Security
+  - IAM policies
+  - KMS encryption
+  - SSL in flight
+   
+- Reliability
+  - Multi AZ
+  - Backups
+
+- Performance
+  - single digit millisecond writes
+  - DAX for caching reads
+  - performance doesn’t degrade if your application scales
+   
+- Cost: Pay per provisioned capacity and storage usage (no need to guess in
+  advance any capacity – can use auto scaling)
 * Terms
 - <<<Cross Orgin Resoure Sharing>>> <<<CORS>>> :: allows you to limit the number
      of websites that can request your files in S3.
 
      (Lowers cost)
+
+- Amazon DynamoDB Accelerator <<<DAX>>> :: a fully managed, highly available,
+     in-memory cache for DynamoDB that delivers up to a 10x performance
+     improvement – from milliseconds to microseconds – even at millions of
+     requests per second.
+
 - KMS :: Amazon's Key Management System
     
 - Route 54 :: Amazon Route 53 provides highly available and scalable Domain Name System (DNS), domain
