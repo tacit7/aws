@@ -575,3 +575,60 @@ https://aws.amazon.com/aws-cost-management/aws-budgets/
 Check out this AWS Billing and Cost Management Cheat Sheet:
 
 https://tutorialsdojo.com/aws-cheat-sheet-aws-billing-and-cost-management/
+
+
+** Question 5
+
+A financial application that calculates accruals, interests, and other data is
+hosted on a fleet of Spot EC2 instances that are configured with Auto Scaling.
+The application is used by an external reporting application that provides the
+total calculation for each user account and transaction. You used CloudWatch to
+automatically monitor the EC2 instance without manually checking the server for
+high CPU Utilization or crashes. What is the time period of data that Amazon
+CloudWatch receives and aggregates from EC2 by default?
+
+
+
+
+
+
+*** Explanation
+
+By default, your instance is enabled for basic monitoring. You can
+optionally enable detailed monitoring. After you enable detailed monitoring, the
+Amazon EC2 console displays monitoring graphs with a 1-minute period for the
+instance. The following table describes basic and detailed monitoring for
+instances.
+
+Basic - Data is available automatically in 5-minute periods at no charge.
+
+Detailed - Data is available in 1-minute periods for an additional cost.
+
+To get detailed data, you must specifically enable it for the instance. For the
+instances where you've enabled detailed monitoring, you can also get aggregated
+data across groups of similar instances.
+
+
+
+
+Options 1 and 2 are incorrect because although you can publish Custom Metrics
+down to 1-second or 2-second resolution to give you more immediate visibility
+and greater granularity into the state and performance of your custom
+applications, these are not the default values in CloudWatch.
+
+Option 3 is incorrect because the 1-minute data period is only available for
+detailed monitoring and it is not enabled by default.
+
+
+
+References:
+
+https://aws.amazon.com/cloudwatch/faqs/
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html
+
+
+
+Check out this Amazon CloudWatch Cheat Sheet:
+
+https://tutorialsdojo.com/aws-cheat-sheet-amazon-cloudwatch/

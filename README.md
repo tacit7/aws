@@ -1,43 +1,45 @@
 
 # Table of Contents
 
-1.  [AWS](#org0c17809)
-    1.  [Resources](#orgd1ee834)
-    2.  [Installing CLI](#orgeb9cd3b)
-    3.  [SQS vs SNS](#orge7d6b3c)
-    4.  [SQS](#org94e08d0)
-2.  [AWS Architect Associate](#org7f9f5b5)
-    1.  [Cross Account AMI](#org0aba91f)
-    2.  [EC2](#orgb4fa150)
-    3.  [ASG](#org44e967d)
-    4.  [RDS](#orgce53a46)
-    5.  [Aurora](#orga815661)
-    6.  [Kinesis](#org2244807)
-        1.  [Streams](#org156f4ef)
-        2.  [Shards](#org5e4ad41)
-    7.  [ElastiCache for Solutions Architects](#org311eabe)
-    8.  [S3](#orgeaad785)
-        1.  [S3 Encryption for Objects](#orge85921f)
-3.  [Terms](#orgc6f8f34)
-        1.  [Record Sets](#org4a50899):DNS:ROUTE54:
-4.  [Exam Questions](#org9e3f10c)
-    1.  [Question](#org01e4e20)
-        1.  [Answer](#org24c8e8f)
-    2.  [Question](#org0aaddac)
-        1.  [Explanation](#org10af1d6)
-    3.  [Question 3:](#orgb6946f3)
-    4.  [Question 4](#org0d50271)
-5.  [Popular exam topics](#org8fc7dc0)
-    1.  [CORS](#org346d894)
+1.  [AWS](#orgc028bdb)
+    1.  [Resources](#orgf028436)
+    2.  [Installing CLI](#orgb174b66)
+    3.  [SQS vs SNS](#orgfd3d549)
+    4.  [SQS](#org8773781)
+2.  [AWS Architect Associate](#orgf7d83d8)
+    1.  [Cross Account AMI](#org9e0cd5b)
+    2.  [EC2](#org963e048)
+    3.  [ASG](#org642bc92)
+    4.  [RDS](#orgdfffc06)
+    5.  [Aurora](#org35ebb3f)
+    6.  [Kinesis](#org04c7e32)
+        1.  [Streams](#org2942b74)
+        2.  [Shards](#org191ad37)
+    7.  [ElastiCache for Solutions Architects](#org39ee9c1)
+    8.  [S3 Overview](#org849ad99)
+        1.  [S3 for Solutions Architect](#orgee43a5d)
+        2.  [S3 Encryption for Objects](#org1f5c242)
+    9.  [DynamoDB for Solutions Architect](#orgce4c773)
+3.  [Terms](#org11e2d6e)
+        1.  [Record Sets](#org2ef13e9):DNS:ROUTE54:
+4.  [Popular exam topics](#orgb85eae4)
+    1.  [CORS](#org7a946cc)
+5.  [Exam 1 Questions](#org24bc30e)
+    1.  [Question](#org00238d0)
+        1.  [Answer](#org5edd442)
+    2.  [Question](#org794fae7)
+        1.  [Explanation](#orgf41a2c8)
+    3.  [Question 3:](#orgfb482ac)
+    4.  [Question 4](#org872e876)
 
 
 
-<a id="org0c17809"></a>
+<a id="orgc028bdb"></a>
 
 # AWS
 
 
-<a id="orgd1ee834"></a>
+<a id="orgf028436"></a>
 
 ## Resources
 
@@ -47,9 +49,11 @@
 -   Use cloudguru for exams
 -   Use linux academy for hands one
 -   akamai
+    
+    [faqs](https://aws.amazon.com/route53/faqs/)
 
 
-<a id="orgeb9cd3b"></a>
+<a id="orgb174b66"></a>
 
 ## Installing CLI
 
@@ -80,7 +84,7 @@ Then configure the cli using your creds.
     aws configure
 
 
-<a id="orge7d6b3c"></a>
+<a id="orgfd3d549"></a>
 
 ## SQS vs SNS
 
@@ -158,7 +162,7 @@ Then configure the cli using your creds.
 </table>
 
 
-<a id="org94e08d0"></a>
+<a id="org8773781"></a>
 
 ## SQS
 
@@ -175,12 +179,12 @@ guide for more information on limits. Order in which messages are sent/received
 is strictly preserved Exactly-once delivery
 
 
-<a id="org7f9f5b5"></a>
+<a id="orgf7d83d8"></a>
 
 # AWS Architect Associate
 
 
-<a id="org0aba91f"></a>
+<a id="org9e0cd5b"></a>
 
 ## Cross Account AMI
 
@@ -211,7 +215,7 @@ is strictly preserved Exactly-once delivery
 <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html>
 
 
-<a id="orgb4fa150"></a>
+<a id="org963e048"></a>
 
 ## EC2
 
@@ -247,7 +251,7 @@ Know the 4 EC2 launch modes:
     -   Spread
 
 
-<a id="org44e967d"></a>
+<a id="org642bc92"></a>
 
 ## ASG
 
@@ -287,7 +291,7 @@ scale-in policy.
 ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 
 
-<a id="orgce53a46"></a>
+<a id="orgdfffc06"></a>
 
 ## RDS
 
@@ -305,7 +309,7 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
     -   Easy to use EC2 Instance Roles to connect to the RDS database
 
 
-<a id="orga815661"></a>
+<a id="org35ebb3f"></a>
 
 ## Aurora
 
@@ -318,12 +322,12 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 -   But the FAQ recommends you use Global Databases instead
 
 
-<a id="org2244807"></a>
+<a id="org04c7e32"></a>
 
 ## Kinesis
 
 
-<a id="org156f4ef"></a>
+<a id="org2942b74"></a>
 
 ### Streams
 
@@ -334,7 +338,7 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 -   Immutable data
 
 
-<a id="org5e4ad41"></a>
+<a id="org191ad37"></a>
 
 ### Shards
 
@@ -346,7 +350,7 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 -   Messages are ordered per shard
 
 
-<a id="org311eabe"></a>
+<a id="org39ee9c1"></a>
 
 ## ElastiCache for Solutions Architects
 
@@ -364,12 +368,44 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
     -   Session Store: store temporary session data in a cache (using TTL features)
 
 
-<a id="orgeaad785"></a>
+<a id="org849ad99"></a>
 
-## S3
+## S3 Overview
+
+-   key/value store for objects
+-   Great for big objects, not so great for small objects
+-   Serverless, scales infinitely, max object size is 5 TB
+-   **Eventuall consistency\*** for overwrites and deletes
+-   Tiers
+    -   S3 Standard
+    -   S3 IA
+    -   S3 One Zone IA
+    -   Glacier for backups
+-   Features:Versioning, Encryption, Cross Region Replication, etc&#x2026;
+-   Security: IAM, Bucket Policies, ACL
+-   Encryption: SSE-S3, SSE-KMS, SSE-C, client side encryption, SSL in transit
+
+**Use Case: static files, key value store for big files, website hosting\***
 
 
-<a id="orge85921f"></a>
+<a id="orgee43a5d"></a>
+
+### S3 for Solutions Architect
+
+-   Operations: no operations needed
+-   Security
+    -   IAM
+    -   Bucket Policies
+    -   ACL
+    -   Encryption (Server/Client)
+    -   SSL
+
+-   Reliability: 99.999999999% durability / 99.99% availability, Multi AZ, CRR
+-   Performance: scales to thousands of read / writes per second, transfer acceleration / multi-part for big files
+-   Cost: pay per storage usage, network cost, requests number
+
+
+<a id="org1f5c242"></a>
 
 ### S3 Encryption for Objects
 
@@ -402,28 +438,62 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
     • Customer fully manages the keys and encryption cycle
 
 
-<a id="orgc6f8f34"></a>
+<a id="orgce4c773"></a>
+
+## DynamoDB for Solutions Architect
+
+-   Operations: no operations needed, auto scaling capability, serverless
+-   Security
+    -   IAM policies
+    -   KMS encryption
+    -   SSL in flight
+
+-   Reliability
+    -   Multi AZ
+    -   Backups
+
+-   Performance
+    -   single digit millisecond writes
+    -   DAX for caching reads
+    -   performance doesn’t degrade if your application scales
+
+-   Cost: Pay per provisioned capacity and storage usage (no need to guess in
+    advance any capacity – can use auto scaling)
+
+
+<a id="org11e2d6e"></a>
 
 # Terms
 
--   **<a id="org158c22b">Cross Orgin Resoure Sharing</a> <a id="org366d51e">CORS</a>:** allows you to limit the number
+-   **<a id="org56883ce"></a> <a id="orgbc66a11">CORS</a>:** allows you to limit the number
     of websites that can request your files in S3.
     
     (Lowers cost)
--   **KMS:** Amazon's Key Management System
 
--   **Route 54:** Amazon Route 53 provides highly available and scalable Domain Name System (DNS), domain
-    name registration, and health-checking web services. With Amazon Route 53, you can create and manage
-    your public DNS records.
+-   **Amazon DynamoDB Accelerator <a id="orgc6f6f1a"></a>:** a fully managed, highly available,
+    in-memory cache for DynamoDB that delivers up to a 10x performance
+    improvement – from milliseconds to microseconds – even at millions of
+    requests per second.
+
+-   **<a id="org7be9935"></a>:** Amazon's Key Management System
+
+-   **<a id="org05f2f41"></a>:** Amazon Route 53 provides highly available and scalable Domain Name
+    System (DNS), domain name registration, and health-checking web services.
+    With Amazon Route 53, you can create and manage your public DNS records.
     
     Akamai is more widely used.
-    
-    [faqs](https://aws.amazon.com/route53/faqs/)
 
--   **<a id="org4a97e18">record set</a>:** 
+-   **S3 One Zone-Infrequent Access:** (S3 One Zone-IA) S3 One Zone-IA is for data
+    that is accessed less frequently, but requires rapid access when needed.
+
+-   **S3 Standard-Infrequent Access <a id="org9f73f72"></a>):** S3 Standard-IA is for
+    data that is accessed less frequently, but requires rapid access when
+    needed.
+-   **Online transaction processing <a id="org0c6336b"></a>:** <https://en.wikipedia.org/wiki/Online_transaction_processing>
+-   **<a id="orgf2fef5b"></a>:** 
 
 
-<a id="org4a50899"></a>
+<a id="org2ef13e9"></a>
 
 ### Record Sets     :DNS:ROUTE54:
 
@@ -459,12 +529,22 @@ Some common record sets: [link](https://ns1.com/resources/dns-types-records-serv
     domain serial number, and information on how frequently DNS information for this zone should be refreshed.
 
 
-<a id="org9e3f10c"></a>
+<a id="orgb85eae4"></a>
 
-# Exam Questions
+# Popular exam topics
 
 
-<a id="org01e4e20"></a>
+<a id="org7a946cc"></a>
+
+## CORS
+
+
+<a id="org24bc30e"></a>
+
+# Exam 1 Questions
+
+
+<a id="org00238d0"></a>
 
 ## Question
 
@@ -478,7 +558,7 @@ Which of the following can be done to ensure that the application works properly
 at the beginning of the day?
 
 
-<a id="org24c8e8f"></a>
+<a id="org5edd442"></a>
 
 ### Answer
 
@@ -488,7 +568,7 @@ application starts to increase on Wednesday, remains high on Thursday, and
 starts to decrease on Friday. You can plan your scaling activities based on the
 predictable traffic patterns of your web application.
 
-&#x2014; There was a picture here -&#x2014;
+![img](https://docs.aws.amazon.com/autoscaling/ec2/userguide/images/as-sample-web-architecture-diagram-with-asgs.png)
 
 To configure your Auto Scaling group to scale based on a schedule, you create a
 scheduled action. The scheduled action tells Amazon EC2 Auto Scaling to perform
@@ -514,7 +594,7 @@ Option 4 is incorrect. Although the Application load balancer can also balance
 the traffic, it cannot increase the instances based on demand.
 
 
-<a id="org0aaddac"></a>
+<a id="org794fae7"></a>
 
 ## Question
 
@@ -534,7 +614,7 @@ As the Solutions Architect of the company, which of the following should you do
 to meet the above requirement?
 
 
-<a id="org10af1d6"></a>
+<a id="orgf41a2c8"></a>
 
 ### Explanation
 
@@ -580,7 +660,7 @@ scenario, and not a combination of an IAM and STS. Although STS is used to send
 temporary tokens for authentication, this is not a compatible use case for RDS.
 
 
-<a id="orgb6946f3"></a>
+<a id="orgfb482ac"></a>
 
 ## Question 3:
 
@@ -594,7 +674,7 @@ to come by, which service can help you manage the budgets for all your AWS
 resources?
 
 
-<a id="org0d50271"></a>
+<a id="org872e876"></a>
 
 ## Question 4
 
@@ -640,14 +720,4 @@ Reference:
 Check out this AWS Billing and Cost Management Cheat Sheet:
 
 <https://tutorialsdojo.com/aws-cheat-sheet-aws-billing-and-cost-management/>
-
-
-<a id="org8fc7dc0"></a>
-
-# Popular exam topics
-
-
-<a id="org346d894"></a>
-
-## CORS
 
