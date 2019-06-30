@@ -436,8 +436,15 @@ Automatically applies to all instances in the subnets it's associated with
      improvement – from milliseconds to microseconds – even at millions of
      requests per second.
 
+- Elastic Network Interface <<ENI>> ::   a logical networking component in a VPC
+     that represents a virtual network card. [[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html][aws link]]
+
 - <<KMS>> :: Amazon's Key Management System
-    
+   
+- NAT Gateway ::  enables instances in a private sub-net to connect to the
+                 internet or other AWS services, but prevent the internet from
+                 initiating a connection with those instances [[https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html%20][aws link]]
+
 - <<Route 54>> :: Amazon Route 53 provides highly available and scalable Domain Name
      System (DNS), domain name registration, and health-checking web services.
      With Amazon Route 53, you can create and manage your public DNS records.
@@ -449,9 +456,19 @@ Automatically applies to all instances in the subnets it's associated with
 
 - S3 Standard-Infrequent Access <<S3 Standard-IA>>) :: S3 Standard-IA is for
      data that is accessed less frequently, but requires rapid access when
-     needed.
+     Needed.
+
 - Online transaction processing <<OLTP>> :: https://en.wikipedia.org/wiki/Online_transaction_processing
 - <<record set>> ::
+
+- VPC Endpoint :: nables you to privately connect your VPC to supported AWS
+                  services and VPC endpoint services powered by PrivateLink
+                  without requiring an internet gateway, NAT device, VPN
+                  connection, or AWS Direct Connect connection.
+- VPC Endpoint (Interface):: 
+- VPC Peering :: networking connection between two VPCs that enables you to
+                 route traffic between them using private IPv4 addresses or IPv6
+                 addresses. [[https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html][aws link]]
 
 
 
