@@ -131,6 +131,16 @@ VPC Section Summary (1/2)
 - Private DNS + Route 53: enable DNS Resolution + DNS hostnames (VPC)
 - NACL: Stateless, subnet rules for inbound and outbound, don’t forget ephemeral ports
 - Security Groups: Stateful, operate at the EC2 instance level
+
+
+- VPC Peering: Connect two VPC with non overlapping CIDR, non transitive
+- VPC Endpoints: Provide private access to AWS Services (S3, DynamoDB, CloudFormation,
+- VPC Flow Logs: Can be setup at the VPC / Subnet / ENI Level, for ACCEPT and REJECT traffic, helps identifying attacks, analyze using Athena or CloudWatch Log Insights
+- Bastion Host: Public instance to SSH into, that has SSH connectivity to instances in private subnets
+- Site to SiteVPN: setup a Customer Gateway on DC,aVirtual Private Gateway onVPC,and site-to-site VPN over public internet
+- Direct Connect:setup aVirtual Private Gateway onVPC,and establish a direct private connection to an AWS Direct Connect Location
+- Direct Connect Gateway: setup a Direct Connect to many VPC in different regions
+- Internet Gateway Egress: like a NAT Gateway, but for IPv6
 * AWS Architect Associate
 
 ** Cross Account AMI
