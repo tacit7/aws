@@ -112,6 +112,25 @@ Kinesis:
 
 
 
+
+** VPC - Gateway vs Interface
+
+[[https://acloud.guru/forums/aws-csa-2019/discussion/-LbnjIbr3jdqQdRSRa7s/VPC%2520Endpoint%2520Interface%2520vs%2520Gateway][aws question]]
+
+one technically has a private IP address and the other one is just a target
+
+** VPC Summary
+VPC Section Summary (1/2)
+- CIDR: IP Range
+- VPC: Virtual Private Cloud => we define a list of IPv4 & IPv6 CIDR
+- Subnets: Tied to an AZ, we define a CIDR
+- Internet Gateway: at the VPC level, provide IPv4 & IPv6 Internet Access
+- Route Tables: must be edited to add routes from subnets to the IGW,VPC Peering Connections,VPC Endpoints, etc...
+- NAT Instances: gives internet access to instances in private subnets. Old, must be setup in a public subnet, disable Source / Destination check flag
+- NAT Gateway: managed by AWS, provides scalable internet access to private instances, IPv4 only
+- Private DNS + Route 53: enable DNS Resolution + DNS hostnames (VPC)
+- NACL: Stateless, subnet rules for inbound and outbound, don’t forget ephemeral ports
+- Security Groups: Stateful, operate at the EC2 instance level
 * AWS Architect Associate
 
 ** Cross Account AMI
@@ -436,6 +455,14 @@ Automatically applies to all instances in the subnets it's associated with
      improvement – from milliseconds to microseconds – even at millions of
      requests per second.
 
+-  Bastion Host :: A bastion host is a specialized computer that is deliberately
+                   exposed on a public network. From a secured network
+                   perspective, it is the only node exposed to the outside world
+                   and is therefore very prone to attack. It is placed outside
+                   the firewall in single firewall systems or, if a system has
+                   two firewalls, it is often placed between the two firewalls
+                   or on the public side of a demilitarized zone (DMZ).
+
 - Elastic Network Interface <<ENI>> ::   a logical networking component in a VPC
      that represents a virtual network card. [[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html][aws link]]
 
@@ -465,7 +492,10 @@ Automatically applies to all instances in the subnets it's associated with
                   services and VPC endpoint services powered by PrivateLink
                   without requiring an internet gateway, NAT device, VPN
                   connection, or AWS Direct Connect connection.
-- VPC Endpoint (Interface):: 
+
+- VPC Endpoint (Interface) :: 
+- VPC Endpoint (Gateway) :: 
+
 - VPC Peering :: networking connection between two VPCs that enables you to
                  route traffic between them using private IPv4 addresses or IPv6
                  addresses. [[https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html][aws link]]
@@ -507,6 +537,9 @@ Some common record sets: [[https://ns1.com/resources/dns-types-records-servers-a
   the Authoritative Name Server for the current DNS zone, contact details for the domain administrator,
   domain serial number, and information on how frequently DNS information for this zone should be refreshed.
  
+
+
+
 
 * Popular exam topics
 
