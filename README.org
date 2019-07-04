@@ -452,6 +452,53 @@ We process rules in number order when deciding whether to allow traffic
 
 Automatically applies to all instances in the subnets it's associated with
 (therefore, you don't have to rely on users to specify the security group)
+
+** Disaster Recovery
+- Any event that has a negative impact on a company’s business continuity or finances is a disaster
+- Disaster recovery (DR) is about preparing for and recovering from a disaster
+- What kind of disaster recovery?
+- On-premise => On-premise: traditional DR, and very expensive • On-premise => AWS Cloud: hybrid recovery
+- AWS Cloud Region A => AWS Cloud Region B
+- Need to define two terms:
+- RPO: Recovery Point Objective
+- RTO: Recover y Time Objective
+- 
+*** Disaster Recovery Strategies
+**** Backup and Restore (High RPO)
+
+**** Disaster Recovery – Pilot Light
+- A small version of the app is always running in the cloud
+- Useful for the critical core (pilot light)
+- Very similar to Backup and Restore
+- Faster than Backup and Restore as critical systems are already up
+
+**** Warm Standby
+- Full system is up and running, but at minimum size
+- Upon disaster, we can scale to production load
+- 
+**** Multi Site / Hot Site Approach
+• Very low RTO (minutes or seconds) – very expensive
+• Full Production Scale is running AWS and On Premise
+*** Disaster RecoveryTips
+**** Backup
+- EBS Snapshots, RDS automated backups / Snapshots, etc...
+- Regular pushes to S3 / S3 IA / Glacier, Lifecycle Policy, Cross Region Replication
+- From On-Premise: Snowball or Storage Gateway
+**** High Availability
+- Use Route53 to migrate DNS over from Region to Region
+- RDS Multi-AZ, ElastiCache Multi-AZ, EFS, S3
+- Site to Site VPN as a recover y from Direct Connect
+****  Replication
+- RDS Replication (Cross Region), AWS Aurora + Global Databases
+- Database replication from on-premise to RDS
+- Storage Gateway
+**** Automation
+- CloudFormation / Elastic Beanstalk to re-create a whole new environment
+- Recover / Reboot EC2 instances with CloudWatch if alarms fail
+- AWS Lambda functions for customized automations
+- Chaos
+- Netflix has a “simian-army” randomly terminating EC2
+
 * Terms
 
 - <<Cross Orgin Resoure Sharing>> <<<CORS>>> :: allows you to limit the number
@@ -465,13 +512,13 @@ Automatically applies to all instances in the subnets it's associated with
      improvement – from milliseconds to microseconds – even at millions of
      requests per second.
 
--  Bastion Host :: A bastion host is a specialized computer that is deliberately
-                   exposed on a public network. From a secured network
-                   perspective, it is the only node exposed to the outside world
-                   and is therefore very prone to attack. It is placed outside
-                   the firewall in single firewall systems or, if a system has
-                   two firewalls, it is often placed between the two firewalls
-                   or on the public side of a demilitarized zone (DMZ).
+- Bastion Host :: A bastion host is a specialized computer that is deliberately
+                  exposed on a public network. From a secured network
+                  perspective, it is the only node exposed to the outside world
+                  and is therefore very prone to attack. It is placed outside
+                  the firewall in single firewall systems or, if a system has
+                  two firewalls, it is often placed between the two firewalls
+                  or on the public side of a demilitarized zone (DMZ).
 
 - Elastic Network Interface <<ENI>> ::   a logical networking component in a VPC
      that represents a virtual network card. [[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html][aws link]]
@@ -482,6 +529,10 @@ Automatically applies to all instances in the subnets it's associated with
                  internet or other AWS services, but prevent the internet from
                  initiating a connection with those instances [[https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html%20][aws link]]
 
+- Recovery Point Objective (<<RPO>>) ::  How much data can your business afford to lose in a disaster.
+
+- Recovery Time Objective (<<RTO>>) :: How much time can your business afford to be down in a disaster.
+ 
 - <<Route 54>> :: Amazon Route 53 provides highly available and scalable Domain Name
      System (DNS), domain name registration, and health-checking web services.
      With Amazon Route 53, you can create and manage your public DNS records.
