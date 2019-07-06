@@ -143,66 +143,7 @@ VPC Section Summary (1/2)
 - Internet Gateway Egress: like a NAT Gateway, but for IPv6
 * AWS Architect Associate
 
-** Cross Account AMI
-- Sharing an AMI to other AWS accounts is possible.
 
-- The owner of the AMI retains ownership of that AMI
-  - you are the owner of the target AMI in your account.
-
-- To copy an AMI that was shared with, the owner of the
-  source AMI must grant you read permissions for the *storage that backs the AMI*,
-  either the associated EBS snapshot (for an Amazon EBS-backed AMI) or an
-  associated S3 bucket (for an instance store-backed AMI).
-
-- Limits:
-
-- Encrypted AMIS shared to your account cannot be copied.
-
-- You can, instead, if the underlying snapshot and encryption key were shared with you,
-  you can copy the snapshot while re- encrypting it with a key of your own.You
-  own the copied snapshot, and can register it as a new AMI.
-
-- You can't copy an AMI with an associated *billingProduct* code that was shared
-  with you from another account.This includes Windows AMIs and AMIs from the AWS
-  Marketplace.To copy a shared AMI with a *billingProduct* code, launch an EC2
-  instance in your account using the shared AMI and then create an AMI from the
-  instance.
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html
-
-
-** EC2
- EC2 instances are billed by the second, t2.micro is free tier
-
- On Linux / Mac we use SSH, on Windows we use Putty
-
- SSH is on port 22, lock down the security group to your IP
-
- Timeout issues => Security groups issues
-
- Permission issues on the SSH key => run “chmod 0400”
-
- Security Groups can reference other Security Groups instead of IP
- ranges (very popular exam question)
-
- Know the difference between Private, Public and Elastic IP
-
- You can customize an EC2 instance at boot time using EC2 User Data
-
-
-  Know the 4 EC2 launch modes:
- - On demand
- - Reserved
- - Spot instances
- - Dedicated Hosts
- - Know the basic instance types: R,C,M,I,G,T2/T3
-
-- You can create AMIs to pre-install software on your EC2 => faster boot
-- AMI can be copied across regions and accounts
-- EC2 instances can be started in placement groups:
-   - Cluster
-   - Spread
-
-    
 ** ASG 
  ASG Default Termination Policy (simplified version):
 . Find the AZ which has the most number of instances
@@ -237,6 +178,187 @@ vailability zone B
  Auto Scaling Groups cool-down timers and the CloudWatch Alarm Period that
  triggers the scale in
 ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
+
+** Aurora
+
+ - Can use IAM authentication for Aurora MySQL and PostgresSQL
+   - Aurora Global databases span multiple regions and enable DR • One Primary Region
+   - One DR Region
+   - The DR region can be used for lower latency reads
+   - < 1 second replica lag on average
+ - If not using Global Databases, you can create cross-region Read Replicas
+ - But the FAQ recommends you use Global Databases instead
+
+** Disaster Recovery
+- Any event that has a negative impact on a company’s business continuity or finances is a disaster
+- Disaster recovery (DR) is about preparing for and recovering from a disaster
+- What kind of disaster recovery?
+- On-premise => On-premise: traditional DR, and very expensive • On-premise => AWS Cloud: hybrid recovery
+- AWS Cloud Region A => AWS Cloud Region B
+- Need to define two terms:
+- RPO: Recovery Point Objective
+- RTO: Recover y Time Objective
+- 
+*** Disaster Recovery Strategies
+**** Backup and Restore (High RPO)
+
+**** Disaster Recovery – Pilot Light
+- A small version of the app is always running in the cloud
+- Useful for the critical core (pilot light)
+- Very similar to Backup and Restore
+- Faster than Backup and Restore as critical systems are already up
+
+**** Warm Standby
+- Full system is up and running, but at minimum size
+- Upon disaster, we can scale to production load
+- 
+**** Multi Site / Hot Site Approach
+• Very low RTO (minutes or seconds) – very expensive
+• Full Production Scale is running AWS and On Premise
+*** Disaster RecoveryTips
+**** Backup
+- EBS Snapshots, RDS automated backups / Snapshots, etc...
+- Regular pushes to S3 / S3 IA / Glacier, Lifecycle Policy, Cross Region Replication
+- From On-Premise: Snowball or Storage Gateway
+**** High Availability
+- Use Route53 to migrate DNS over from Region to Region
+- RDS Multi-AZ, ElastiCache Multi-AZ, EFS, S3
+- Site to Site VPN as a recover y from Direct Connect
+****  Replication
+- RDS Replication (Cross Region), AWS Aurora + Global Databases
+- Database replication from on-premise to RDS
+- Storage Gateway
+**** Automation
+- CloudFormation / Elastic Beanstalk to re-create a whole new environment
+- Recover / Reboot EC2 instances with CloudWatch if alarms fail
+- AWS Lambda functions for customized automations
+- Chaos
+- Netflix has a “simian-army” randomly terminating EC2
+  
+** DynamoDB for Solutions Architect
+
+- Operations: no operations needed, auto scaling capability, serverless
+- Security
+  - IAM policies
+  - KMS encryption
+  - SSL in flight
+   
+- Reliability
+  - Multi AZ
+  - Backups
+
+- Performance
+  - single digit millisecond writes
+  - DAX for caching reads
+  - performance doesn’t degrade if your application scales
+   
+- Cost: Pay per provisioned capacity and storage usage (no need to guess in
+  advance any capacity – can use auto scaling)
+
+
+** Cross Account AMI
+- Sharing an AMI to other AWS accounts is possible.
+
+- The owner of the AMI retains ownership of that AMI
+  - you are the owner of the target AMI in your account.
+
+- To copy an AMI that was shared with, the owner of the
+  source AMI must grant you read permissions for the *storage that backs the AMI*,
+  either the associated EBS snapshot (for an Amazon EBS-backed AMI) or an
+  associated S3 bucket (for an instance store-backed AMI).
+
+- Limits:
+
+- Encrypted AMIS shared to your account cannot be copied.
+
+- You can, instead, if the underlying snapshot and encryption key were shared with you,
+  you can copy the snapshot while re- encrypting it with a key of your own.You
+  own the copied snapshot, and can register it as a new AMI.
+
+- You can't copy an AMI with an associated *billingProduct* code that was shared
+  with you from another account.This includes Windows AMIs and AMIs from the AWS
+  Marketplace.To copy a shared AMI with a *billingProduct* code, launch an EC2
+  instance in your account using the shared AMI and then create an AMI from the
+  instance.
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html
+
+** EBS & EFS
+
+- EBS volumes can be attached to only one instance at a time
+- EBS volumes are locked at the AZ level
+- Migrating an EBS volume across AZ means first backing it up (snapshot), then recreating it in the other AZ
+- EBS backups use IO and you shouldn’t run them while your application is handling a lot of traffic
+- Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated. (you can disable that)
+- Disk IO is high => Increase EBS volume size (for gp2) • EFS mounting 100s of instances
+- EFS share website files
+- EBS gp2, optimize on cost
+- Custom AMI for faster deploy on ASG • EFS vs EBS vs Instance Store
+- Solution architecture on EBS / EFS is discussed in a later section
+* EC2
+ EC2 instances are billed by the second, t2.micro is free tier
+
+ On Linux / Mac we use SSH, on Windows we use Putty
+
+ SSH is on port 22, lock down the security group to your IP
+
+ Timeout issues => Security groups issues
+
+ Permission issues on the SSH key => run “chmod 0400”
+
+ Security Groups can reference other Security Groups instead of IP
+ ranges (very popular exam question)
+
+ Know the difference between Private, Public and Elastic IP
+
+ You can customize an EC2 instance at boot time using EC2 User Data
+
+
+  Know the 4 EC2 launch modes:
+ - On demand
+ - Reserved
+ - Spot instances
+ - Dedicated Hosts
+ - Know the basic instance types: R,C,M,I,G,T2/T3
+
+- You can create AMIs to pre-install software on your EC2 => faster boot
+- AMI can be copied across regions and accounts
+- EC2 instances can be started in placement groups:
+   - Cluster
+   - Spread
+
+    
+** ElastiCache for Solutions Architects
+
+- Security:
+  - Redis support Redis AUTH (username / password)
+  - SSL in-flight encryption must be enabled and used
+  - Memcached support SASL authentication (advanced)
+  - None of the caches support IAM authentication
+  - IAM policies on ElastiCache are only used for AWS API-level security
+
+- Patterns for ElastiCache:
+  - Lazy Loading: all the read data is cached, data can become stale in cache
+  - Write Through: Adds or update data in the cache when written to a DB (no
+    stale data)
+  - Session Store: store temporary session data in a cache (using TTL features)
+
+** Kinesis
+
+*** Streams
+- Divided into partitions
+- Can retain data from one day up to seven days
+- Can have multiple consumers
+- Real-time processing
+- Immutable data
+
+
+*** Shards
+- a stream has many shards
+- 1 MB/s or 1000 messages at write *per shard*
+- 2 MB/s at *read per shard*
+- Billed per shard 
+- Users can have unlimited shards
+- Messages are ordered per shard
 
 
 ** RDS
@@ -279,57 +401,11 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 add Read Replicas. Doesn’t auto-scale
 
 - Cost: Pay per hour based on provisioned EC2 and EBS
-** Aurora
-
- - Can use IAM authentication for Aurora MySQL and PostgresSQL
-   - Aurora Global databases span multiple regions and enable DR • One Primary Region
-   - One DR Region
-   - The DR region can be used for lower latency reads
-   - < 1 second replica lag on average
- - If not using Global Databases, you can create cross-region Read Replicas
- - But the FAQ recommends you use Global Databases instead
-
-   
-** Kinesis
-
-*** Streams
-- Divided into partitions
-- Can retain data from one day up to seven days
-- Can have multiple consumers
-- Real-time processing
-- Immutable data
-
-
-*** Shards
-- a stream has many shards
-- 1 MB/s or 1000 messages at write *per shard*
-- 2 MB/s at *read per shard*
-- Billed per shard 
-- Users can have unlimited shards
-- Messages are ordered per shard
-
-
-** ElastiCache for Solutions Architects
-
-- Security:
-  - Redis support Redis AUTH (username / password)
-  - SSL in-flight encryption must be enabled and used
-  - Memcached support SASL authentication (advanced)
-  - None of the caches support IAM authentication
-  - IAM policies on ElastiCache are only used for AWS API-level security
-
-- Patterns for ElastiCache:
-  - Lazy Loading: all the read data is cached, data can become stale in cache
-  - Write Through: Adds or update data in the cache when written to a DB (no
-    stale data)
-  - Session Store: store temporary session data in a cache (using TTL features)
-
-
 ** S3 Overview
 - key/value store for objects
 - Great for big objects, not so great for small objects
 - Serverless, scales infinitely, max object size is 5 TB
-- *Eventuall consistency** for overwrites and deletes
+- *Eventual consistency* for overwrites and deletes
 - Tiers
   - S3 Standard
   - S3 IA
@@ -387,28 +463,28 @@ add Read Replicas. Doesn’t auto-scale
 • Customer fully manages the keys and encryption cycle
 
 
-** DynamoDB for Solutions Architect
 
-- Operations: no operations needed, auto scaling capability, serverless
-- Security
-  - IAM policies
-  - KMS encryption
-  - SSL in flight
-   
-- Reliability
-  - Multi AZ
-  - Backups
-
-- Performance
-  - single digit millisecond writes
-  - DAX for caching reads
-  - performance doesn’t degrade if your application scales
-   
-- Cost: Pay per provisioned capacity and storage usage (no need to guess in
-  advance any capacity – can use auto scaling)
+*** [[https://advancedweb.hu/2018/10/30/s3_signed_urls/%0A][How S3 Signed URLs work]]
 
 
+- You can sign urls offline
+  - there is no check that the resulting URL will work though
 
+To sign:
+- provide the region
+- keys
+- bucket
+- object key for the signer
+- Optionally, expiration time (defaults to 15 minutes)
+
+** Storage Gateway
+
+- Exam tip: Read the question well, it will hint at which gateway to use
+  - On premise data to the cloud => Storage Gateway
+  - File access / NFS => File Gateway
+    (backed by S3)
+- Volumes / Block Storage / iSCSI => Volume gateway (backed by S3 with EBS snapshots)
+- VTL Tape solution / Backup with iSCSI = >Tape Gateway (backed by S3 and Glacier)
 ** VPC networking
 *** Default VPC Walkthrough
 - All new accounts have a default VPC
@@ -452,52 +528,6 @@ We process rules in number order when deciding whether to allow traffic
 
 Automatically applies to all instances in the subnets it's associated with
 (therefore, you don't have to rely on users to specify the security group)
-
-** Disaster Recovery
-- Any event that has a negative impact on a company’s business continuity or finances is a disaster
-- Disaster recovery (DR) is about preparing for and recovering from a disaster
-- What kind of disaster recovery?
-- On-premise => On-premise: traditional DR, and very expensive • On-premise => AWS Cloud: hybrid recovery
-- AWS Cloud Region A => AWS Cloud Region B
-- Need to define two terms:
-- RPO: Recovery Point Objective
-- RTO: Recover y Time Objective
-- 
-*** Disaster Recovery Strategies
-**** Backup and Restore (High RPO)
-
-**** Disaster Recovery – Pilot Light
-- A small version of the app is always running in the cloud
-- Useful for the critical core (pilot light)
-- Very similar to Backup and Restore
-- Faster than Backup and Restore as critical systems are already up
-
-**** Warm Standby
-- Full system is up and running, but at minimum size
-- Upon disaster, we can scale to production load
-- 
-**** Multi Site / Hot Site Approach
-• Very low RTO (minutes or seconds) – very expensive
-• Full Production Scale is running AWS and On Premise
-*** Disaster RecoveryTips
-**** Backup
-- EBS Snapshots, RDS automated backups / Snapshots, etc...
-- Regular pushes to S3 / S3 IA / Glacier, Lifecycle Policy, Cross Region Replication
-- From On-Premise: Snowball or Storage Gateway
-**** High Availability
-- Use Route53 to migrate DNS over from Region to Region
-- RDS Multi-AZ, ElastiCache Multi-AZ, EFS, S3
-- Site to Site VPN as a recover y from Direct Connect
-****  Replication
-- RDS Replication (Cross Region), AWS Aurora + Global Databases
-- Database replication from on-premise to RDS
-- Storage Gateway
-**** Automation
-- CloudFormation / Elastic Beanstalk to re-create a whole new environment
-- Recover / Reboot EC2 instances with CloudWatch if alarms fail
-- AWS Lambda functions for customized automations
-- Chaos
-- Netflix has a “simian-army” randomly terminating EC2
 
 * Terms
 
