@@ -530,7 +530,6 @@ Automatically applies to all instances in the subnets it's associated with
 (therefore, you don't have to rely on users to specify the security group)
 
 * Terms
-
 - <<Cross Orgin Resoure Sharing>> <<<CORS>>> :: allows you to limit the number
      of websites that can request your files in S3.
 
@@ -549,6 +548,16 @@ Automatically applies to all instances in the subnets it's associated with
                   the firewall in single firewall systems or, if a system has
                   two firewalls, it is often placed between the two firewalls
                   or on the public side of a demilitarized zone (DMZ).
+- <<<CMK>>> Customer Master Key :: The primary resources in AWS KMS are customer
+     master keys (CMKs). You can use a CMK to encrypt and decrypt up to 4 KB
+     (4096 bytes) of data. Typically, you use CMKs to generate, encrypt, and
+     decrypt the data keys that you use outside of AWS KMS to encrypt your data.
+     This strategy is known as [[envelope encryption]].
+
+
+- <<envelope encryption>> Envelope Encryption ::  the practice of encrypting
+     plaintext data with a data key, and then encrypting the data key under
+     another key.
 
 - Elastic Network Interface <<ENI>> ::   a logical networking component in a VPC
      that represents a virtual network card. [[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html][aws link]]
