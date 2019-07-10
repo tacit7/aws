@@ -879,3 +879,19 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html
 Check out this Amazon CloudWatch Cheat Sheet:
 
 https://tutorialsdojo.com/aws-cheat-sheet-amazon-cloudwatch/
+
+
+
+
+You work for a leading university as an AWS Infrastructure Engineer and also as
+a professor to aspiring AWS architects. As a way to familiarize your students
+with AWS, you gave them a project to host their applications to an EC2 instance.
+One of your students created an instance to host their online enrollment system
+project but is having a hard time connecting to their newly created EC2
+instance. Your students have explored all of the troubleshooting guides by AWS
+and narrowed it down to login issues.
+
+Which of the following can you use to log into an EC2 instance?
+
+
+key pairs
