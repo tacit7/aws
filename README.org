@@ -895,3 +895,18 @@ Which of the following can you use to log into an EC2 instance?
 
 
 key pairs
+
+
+
+* exam 2
+
+You are helping out a new DevOps Engineer to design her first architecture in
+AWS. She is planning to develop a highly available and fault-tolerant
+architecture which is composed of an Elastic Load Balancer and an Auto Scaling
+group of EC2 instances deployed across multiple Availability Zones. This will be
+used by an online accounting application which requires TLS termination
+capabilities, path-based routing, host-based routing, and bi-directional
+communication channels using WebSockets.
+
+Which is the most suitable type of Elastic Load Balancer that you should
+recommend for her to use?
