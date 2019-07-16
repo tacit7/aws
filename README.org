@@ -141,6 +141,13 @@ VPC Section Summary (1/2)
 - Direct Connect:setup aVirtual Private Gateway onVPC,and establish a direct private connection to an AWS Direct Connect Location
 - Direct Connect Gateway: setup a Direct Connect to many VPC in different regions
 - Internet Gateway Egress: like a NAT Gateway, but for IPv6
+
+*** VPC default
+By default, a "default subnet" of your VPC is actually a public subnet, because
+the main route table sends the subnet's traffic that is destined for the
+internet to the internet gateway. You can make a default subnet into a private
+subnet by removing the route from the destination 0.0.0.0/0 to the internet
+gateway.
 * AWS Architect Associate
 
 
