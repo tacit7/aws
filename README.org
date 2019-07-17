@@ -148,6 +148,11 @@ the main route table sends the subnet's traffic that is destined for the
 internet to the internet gateway. You can make a default subnet into a private
 subnet by removing the route from the destination 0.0.0.0/0 to the internet
 gateway.
+
+-Each subnet maps to a single Availability Zone.
+-Every subnet that you create is automatically associated with the main route table for the VPC.
+-If a subnet's traffic is routed to an Internet gateway, the subnet is known as a public subnet. 
+
 * AWS Architect Associate
 
 
