@@ -267,7 +267,19 @@ ttps://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html
 - Cost: Pay per provisioned capacity and storage usage (no need to guess in
   advance any capacity – can use auto scaling)
 
+** ELB
 
+
+
+*** Classic ELB
+Cross zone balancing takes into account each machine in all your zones in your VPC.
+If you dont have that enabled, the elb will just alternate between the zones.
+   aka elb takes a request, it will send it to aza.
+       elb takes another request, it will send it to azb
+       elb takes another request, it will send it to aza
+       elb takes another request, it will send it to azb
+       etc
+** How do enable cross zone load balancing in the ALB
 ** Cross Account AMI
 - Sharing an AMI to other AWS accounts is possible.
 
@@ -955,3 +967,47 @@ communication channels using WebSockets.
 
 Which is the most suitable type of Elastic Load Balancer that you should
 recommend for her to use?
+
+
+
+* Best Practices for DDoS Mitigation on AWS
+:PROPERTIES:
+:youtube:  https://www.youtube.com/watch?v=HnoZS5jj7pk
+:slides:   https://www.slideshare.net/AmazonWebServices/best-practices-for-ddos-mitigation-on-aws-91289622
+:END:
+
+
+** 3:57 Types of DDoS Attacks
+Slide 7
+** 5:03 Why is DDoS a Problem
+
+** 6:56 Traditional Challenges with DDoS Protection
+• Mitigations require bandwidth – lots of it.
+• Scaling is expensive.
+• Anomaly detection is challenging and evolving.
+• DDoS expertise is in short supply.
+
+** 8:14 Aws Shield Standard
+
+** 10:41 Shield Advanced
+
+
+** 14:57 10 Best Practices for DDoS Resiliency
+
+** 15:21 Basic Web Application on AWS
+** 15:45 Build Scalable...
+** 16:07 First Best Practice
+** 18:37 Second
+** 19:11 Third
+** 20:28
+** 20:48 Fourth
+** 21:35 
+** 21:38 Fifth
+** 22:42 Sixth
+** 23:24 Seventh
+** 24:37 Eight
+** 25:19 Nine
+** 27:11 Tenth
+** 30:20 Summary
+** 31:30 Demo
+** 
