@@ -1,5 +1,9 @@
 #+SETUPFILE: ~/repo/org-html-themes/setup/theme-readtheorg.setup
 
+
+
+* Did you study
+Jul 21 yes
 * AWS
 
 ** Resources
@@ -995,8 +999,9 @@ Slide 7
 ** 15:21 Basic Web Application on AWS
 ** 15:45 Build Scalable...
 ** 16:07 First Best Practice : Use a Global Distributed System
-** 18:37 Second
-** 19:11 Third
+** 18:37 Second: Make you ELB  Handle demand
+** 19:11 Third: Build  a DDoS protected app
+** Security 
 ** 20:28
 ** 20:48 Fourth
 ** 21:35 
