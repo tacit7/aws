@@ -157,6 +157,30 @@ gateway.
 -Every subnet that you create is automatically associated with the main route table for the VPC.
 -If a subnet's traffic is routed to an Internet gateway, the subnet is known as a public subnet. 
 
+** HVM vs PV
+HVM
+Hardware-assisted virtual machine (HVM) is a Xen specific phrase to describe a platform virtualization approach that enables full virtualization. This approach is also known as hardware-assisted virtualization, accelerated virtualization, and native virtualization (specific to Virtual Iron). Full virtualization is used to simulate a hardware environment or virtual machine where a guest server executes instructions in complete isolation. Each guest server is unaware of and runs independently of the other guest servers on the physical machine. This means each guest server can run on its own OS, so you can have one guest running on Linux and another one on Windows.
+
+HVM Pros:
+Simulates a complete hardware environment.
+Guest server executes in complete isolation.
+Each guest server can run on its own OS -- can run Linux and Windows.
+More stability.
+HVM Cons:
+Slower overall server performance because of the hardware overhead.
+PV
+With paravirtualization (PV), the guest servers are aware of the hypervisor and their guest status. Because each OS is aware of the demands that the other operating systems are placing on the physical server, the PV approach does not require as much processing power to manage the guest operating systems.
+
+PV Pros:
+Lower virtualization overhead.
+Stability and performance is close to the real servers and hardware virtualization.
+PV Cons:
+Supports only Linux.
+Poor portability and compatibility.
+More difficult to implement.
+OS options can not be changed during the installation.
+Can not compile and install a custom kernel.
+Both the host and guest kernel must be patched.
 * AWS Architect Associate
 
 
@@ -1014,3 +1038,41 @@ Slide 7
 ** 30:20 Summary
 ** 31:30 Demo
 ** 
+
+* Deep Dive on Bring Your Own IP - AWS Online Tech Talks
+:PROPERTIES:
+:youtube:  https://www.youtube.com/watch?v=6G54JaQq5Go
+:END:
+
+** 0:20 VPC Foundations
+Good rundown on VPC
+
+** 4:36 What is an Elastic IP?
+
+** 5:14 Bring your own IP
+
+- Keep your IP address reputation
+- Avoid changes to IP address whitelists
+- Move legacy applications with no need to change IP addresses
+  
+** 6:00 IP reputation
+
+** 6:36 White listing
+- tell your partners who you are at the IP level
+  and know this doesnt change
+
+** 7:20 Migration
+- Avoid IP address changes to applications when you migrate to the AWS Cloud
+
+** 8:20 Redundancy
+
+** 9:20 How do you use it? 
+**  9:30  The address need to be registred (RIR)
+** 10:00 Preparing your IP
+1.create a ROA to authorize amazon to advertize your address
+** 10:41 ROA 
+** 11:01 Wher can i get a ROA?
+ARIN
+
+** 11:20 Preparing your IP Range
+ 2.Generate an rsa 2018-bit key pair
