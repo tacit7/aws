@@ -1076,3 +1076,6 @@ ARIN
 
 ** 11:20 Preparing your IP Range
  2.Generate an rsa 2018-bit key pair
+
+* Create an Auto Scaling Group and Application Load Balancer in AWS
+First video
