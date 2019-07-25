@@ -5,6 +5,7 @@
 * Did you study
 Jul 21 yes
 jul 24 yea
+Yes
 * AWS
 
 ** Resources
@@ -1080,3 +1081,7 @@ ARIN
 
 * Create an Auto Scaling Group and Application Load Balancer in AWS
 First video
+
+
+
+
