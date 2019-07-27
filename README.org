@@ -7,6 +7,7 @@ Jul 21 yes
 jul 24 yea
 Yes
 Yes
+yes
 * AWS
 
 ** Resources
