@@ -10,7 +10,8 @@ Yes
 yes
 Yes
 Yes
-* AWS
+yes
+* AS
 
 ** Resources
 [[https://tutorialsdojo.com/aws-cheat-sheet-aws-auto-scaling/][auto scaling cheat sheet]]
