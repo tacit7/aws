@@ -1,6 +1,10 @@
 #+SETUPFILE: ~/repo/org-html-themes/setup/theme-readtheorg.setup
 
 
+Answer - B
+Since the company has full ownership of the API, the best solution would be to convert the code for the API and use it in a Lambda function. This can help save on cost, since in the case of Lambda, you only pay for the time the function runs, and not for the infrastructure. Then, you can use the API Gateway along with the AWS Lambda function to scale accordingly. For more information on using API Gateway with AWS Lambda, please visit the following URL:
+https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-lambda-integration.html
+Note: With Lambda you do not have to provision your own instances Lambda performs all the operational and administrative activities on your behalf, including capacity provisioning, monitoring fleet health, applying security patches to the underlying compute resources, deploying your code, running a web service front end, and monitoring and logging your code. AWS Lambda provides easy scaling and high availability to your code without additional effort on your part.
 
 * Did you study
 Jul 21 yes
@@ -11,7 +15,8 @@ yes
 Yes
 Yes
 yes
-* AS
+yes
+* ASG
 
 ** Resources
 [[https://tutorialsdojo.com/aws-cheat-sheet-aws-auto-scaling/][auto scaling cheat sheet]]
