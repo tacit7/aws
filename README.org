@@ -7,6 +7,7 @@ https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-wit
 Note: With Lambda you do not have to provision your own instances Lambda performs all the operational and administrative activities on your behalf, including capacity provisioning, monitoring fleet health, applying security patches to the underlying compute resources, deploying your code, running a web service front end, and monitoring and logging your code. AWS Lambda provides easy scaling and high availability to your code without additional effort on your part.
 
 * Did you study
+yes-or-no-p-history
 Jul 21 yes
 jul 24 yea
 Yes
