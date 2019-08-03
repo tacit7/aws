@@ -11,6 +11,7 @@ yes-or-no-p-history
 Jul 21 yes
 jul 24 yea
 Yes
+yes
 Yes
 yes
 Yes
