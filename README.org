@@ -10,6 +10,7 @@ Note: With Lambda you do not have to provision your own instances Lambda perform
 yes-or-no-p-history
 yes-or-no-p-history
 Jul 21 yes
+Jul 21 yes
 jul 24 yea
 Yes
 yes
