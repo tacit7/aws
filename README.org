@@ -1102,3 +1102,54 @@ First video
 
 
 
+
+
+* General Tips
+* 
+https://www.reddit.com/r/AWSCertifications/comments/ct7fjk/aws_security_specialist/exjcjj2/
+I studied for - and passed - this exam using only A Cloud Guru's materials
+(November 2018). I think their content spends the appropriate amount of time on
+each of the topics, based on their weight, and the labs are effective. With what
+you learned in the SAA course materials, particularly around S3, logs, and IAM,
+you should be fine.
+
+That said, my first experience with Linux Academy was with the SysOps
+Administrator exam, after finding that the A Cloud Guru content for that exam
+was not sufficient at all. I really like Linux Academy's SysOps course, and it
+matched the test material very closely. I didn't have any surprises on the exam.
+I would be surprised if Linux Academy's Security Specialty exam content misses
+the mark.
+
+Test prep aside, I can give you some advice about the test in general. First,
+read every word in every question. Read it again. Read the sentences out of
+order, which will force your brain to focus on the words in the sentence and not
+the idea your brain thinks they are trying to convey. If you have a tendency to
+work quickly and try to capture the general concepts of the question (like me),
+you will not do well on this exam. This exam is not difficult, it's tricky. A
+word can be practically buried in a question, e.g. "An auditor cannot access the
+S3 buckets where logs are stored," vs. "An auditor cannot access some of the S3
+buckets where logs are stored." The word "some" in the second phrase will
+totally change how you answer that question. Work slowly and make sure you
+understand each question completely.
+
+Second, the topics you should spend the most time on are:
+
+When an action can be governed by IAM policy, S3 bucket policy, and object
+ACL's, how will the request be evaluated? At the time I took the exam,
+Organizations and Service Control Policies were not covered. Federation, IAM
+roles, and Cognito Logging with CloudTrail and securing those logs What
+GuardDuty, Trusted Advisor, Inspector, Config, and Shield do, and what they
+don't do. Secondarily, know which services are proactive vs. reactive, and
+how/if they respond to events. Be able to read S3 bucket policies and IAM
+policies, and understand what the effects of a policy they give you will be.
+Generally, the best exam tip for any AWS exam is to not start out by looking for
+right answers, but for ones that are definitely wrong. Services that don't
+actually exist, services that don't work the way the potential answer suggests,
+or scenarios that aren't possible... eliminating those will make this test
+easier. On difficult questions, you'l be left with one or two options, and
+usually you'll just have to decide which option is more efficient,
+cost-effective, or practical.
+
+All-in-all, I found the SA-A exam to be more challenging than this one. I would
+also recommend going to SysOps Admin (if that's your bag) after this, because
+75% of that exam overlaps with Security and SA-A.
